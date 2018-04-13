@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PreparationTask-1</string>
+    <string name="facebook_app_id">883497491829276</string>
+    <string name="fb_login_protocol_scheme">fb883497491829276</string>
+    <string name="name">Name</string>
+    <string name="mail">Mail</string>
+    <string name="userName">UserName</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="enter">Enter</string>
+    <string name="sign_up_with_email">Sign Up with E-mail</string>
+    <string name="remember_me">Remember_me</string>
+
+</resources>
