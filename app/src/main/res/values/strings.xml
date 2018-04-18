@@ -10,5 +10,17 @@
     <string name="enter">Enter</string>
     <string name="sign_up_with_email">Sign Up with E-mail</string>
     <string name="remember_me">Remember_me</string>
+    <string name="valid_data">valid email address and password</string>
+    <string name="mymail">Mail:</string>
+    <string name="mypassword">Password:</string>
+    <string name="loading_data">Loading ... please click again</string>
+    <string name="error">Error Data</string>
+    <string name="notvaliddata">You have to enter  valid mail and password</string>
+    <string name="not_valid_password">You have to enter the password</string>
+    <string name="not_valid_mail">You have to enter the mail</string>
+    <string name="notValid">You have to enter the mail and the password</string>
+    <string name="Internt_access">Please open your internet access</string>
+    <string name="loginerror">login request has an error</string>
+    <string name="logincancelled">login request has been canceled</string>
 
 </resources>

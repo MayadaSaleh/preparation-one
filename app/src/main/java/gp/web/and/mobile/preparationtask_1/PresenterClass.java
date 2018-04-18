@@ -29,31 +29,6 @@ public class PresenterClass implements Contract.MyPresenter {
         myView.initView();
     }
 
-        //Mail and Password Validation
-    @Override
-    public void checkValidation() {
-        String userNameText = myView.getMail();
-        Log.i("name", userNameText);
-        String emailPattern = model.getValidEmailPattern();
-        Log.i("mailPattern", emailPattern);
-        String passwordtext=myView.getPassword();
-        Log.i("pass",passwordtext+"");
-        Log.i("pass","aaaaaaaaaaaaa");
-
-        if (userNameText.matches(emailPattern) && passwordtext.length()>0) {
-            myView.getValidationResult("1");
-        }else if(userNameText.length()==0 && passwordtext.length()==0){
-            myView.getValidationResult("5");
-        } else if(userNameText.length()==0){
-            myView.getValidationResult("4");
-        }else if (passwordtext.length() ==0){
-            myView.getValidationResult("3");
-        }
-         else {
-            myView.getValidationResult("2");
-        }
-    }
-
     //
     @Override
     public String checkjson(String mail, String password) {

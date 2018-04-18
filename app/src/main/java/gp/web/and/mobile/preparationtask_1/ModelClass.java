@@ -25,12 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ModelClass implements Contract.MyModel {
     String users = "loading";
 
-
-    @Override
-    public String getValidEmailPattern() {
-        return "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    }
-
     //Using API by Retrofit
     @Override
     public String getloginDatafromJson(final String mail, final String password) {

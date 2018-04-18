@@ -23,12 +23,10 @@ public interface Contract {
     }
 
     interface MyModel {
-        String getValidEmailPattern();
         String getloginDatafromJson(String mail, String password);
     }
 
     interface MyPresenter {
-        void checkValidation();
         void getUserDetailsusingFBPresenter(LoginResult loginResult);
         String checkjson(String mail, String password);
     }

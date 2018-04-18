@@ -74,14 +74,14 @@ public class MainActivity extends Activity implements Contract.MyView {
 
             @Override
             public void onCancel() {
-                Log.i("cancelLogin", "login request has been canceled");
+                Log.i("cancelLogin", String.valueOf(R.string.logincancelled));
             }
 
             @Override
             public void onError(FacebookException error) {
                 error.fillInStackTrace();
                 Log.i("Error Message", error.getMessage());
-                Log.i("error request", "login request has an error");
+                Log.i("error request", String.valueOf(R.string.loginerror));
             }
         });
 
@@ -110,9 +110,20 @@ public class MainActivity extends Activity implements Contract.MyView {
         Boolean state = checkInternetConnectivity();
         if (state == true) {
 
-            myPresenter.checkValidation();
+            if (getMail().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+") && getPassword().toString().length()>0) {
+                getValidationResult("1");
+            }else if(getMail().toString().length()==0 && getPassword().toString().length()==0){
+               getValidationResult("5");
+            } else if(getMail().toString().length()==0){
+                getValidationResult("4");
+            }else if (getPassword().toString().length() ==0){
+                getValidationResult("3");
+            }
+            else {
+                getValidationResult("2");
+            }
         } else {
-            Toast.makeText(getApplicationContext(), "Please open your internet access", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.Internt_access, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -132,19 +143,6 @@ public class MainActivity extends Activity implements Contract.MyView {
     @Override
     public void initView() {
         ButterKnife.bind(this);
-
-
-//        //To get keyhash
-//        try {
-//            PackageInfo info = getPackageManager().getPackageInfo("gp.web.and.mobile.preparationtask_1",PackageManager.GET_SIGNATURES);
-//            for (Signature signature : info.signatures) {
-//                MessageDigest md = MessageDigest.getInstance("SHA");
-//                md.update(signature.toByteArray());
-//                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));  //jx+l4rOdSAJTESUYVrKCo6mEEvw=
-//            }        } catch (PackageManager.NameNotFoundException e)
-//        {       }
-//        catch (NoSuchAlgorithmException e) {        }
-
     }
 
     @Override
@@ -163,38 +161,38 @@ public class MainActivity extends Activity implements Contract.MyView {
 
         switch (s) {
             case "1":
-                Toast.makeText(getApplicationContext(), "valid email address and password", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.valid_data, Toast.LENGTH_LONG).show();
 
                 String check = myPresenter.checkjson(userName.getText().toString().trim(), password.getText().toString().trim());
                 if (check == "true") {
-                    Toast.makeText(getApplicationContext(), "Mail:" + userName.getText().toString().trim() + "Password:" + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.mymail + userName.getText().toString().trim() + R.string.mypassword + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
 
                     Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
                     myIntent.putExtra("mail", userName.getText().toString().trim());
                     myIntent.putExtra("password", password.getText().toString().trim());
                     MainActivity.this.startActivity(myIntent);
                 } else if (check == "loading") {
-                    Toast.makeText(getApplicationContext(), "Loading ... please click again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.loading_data, Toast.LENGTH_LONG).show();
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error Data", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
                 }
                 break;
 
             case "2":
-                Toast.makeText(getApplicationContext(), "You have to enter  valid mail and password", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.notvaliddata, Toast.LENGTH_LONG).show();
                 break;
 
             case "3":
-                Toast.makeText(getApplicationContext(), "You have to enter the password ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.not_valid_password, Toast.LENGTH_LONG).show();
                 break;
 
             case "4":
-                Toast.makeText(getApplicationContext(), "You have to enter the mail", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.not_valid_mail, Toast.LENGTH_LONG).show();
                 break;
 
             case "5":
-                Toast.makeText(getApplicationContext(), "You have to enter the mail and the password", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.notValid, Toast.LENGTH_LONG).show();
                 break;
         }
 
