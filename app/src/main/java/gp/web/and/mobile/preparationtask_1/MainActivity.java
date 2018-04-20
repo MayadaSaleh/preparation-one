@@ -162,21 +162,7 @@ public class MainActivity extends Activity implements Contract.MyView {
         switch (s) {
             case "1":
                 Toast.makeText(getApplicationContext(), R.string.valid_data, Toast.LENGTH_LONG).show();
-
-                String check = myPresenter.checkjson(userName.getText().toString().trim(), password.getText().toString().trim());
-                if (check == "true") {
-                    Toast.makeText(getApplicationContext(), R.string.mymail + userName.getText().toString().trim() + R.string.mypassword + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
-
-                    Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
-                    myIntent.putExtra("mail", userName.getText().toString().trim());
-                    myIntent.putExtra("password", password.getText().toString().trim());
-                    MainActivity.this.startActivity(myIntent);
-                } else if (check == "loading") {
-                    Toast.makeText(getApplicationContext(), R.string.loading_data, Toast.LENGTH_LONG).show();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
-                }
+                 myPresenter.checkjson(userName.getText().toString().trim(), password.getText().toString().trim());
                 break;
 
             case "2":
@@ -196,6 +182,23 @@ public class MainActivity extends Activity implements Contract.MyView {
                 break;
         }
 
+    }
+
+@Override
+    public  void fungdedatany(String check) {
+        if (check == "true") {
+            Toast.makeText(getApplicationContext(), R.string.mymail + userName.getText().toString().trim() + R.string.mypassword + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
+
+            Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+            myIntent.putExtra("mail", userName.getText().toString().trim());
+            myIntent.putExtra("password", password.getText().toString().trim());
+            MainActivity.this.startActivity(myIntent);
+        } else if (check == "loading") {
+            Toast.makeText(getApplicationContext(), R.string.loading_data, Toast.LENGTH_LONG).show();
+
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
+        }
     }
 }
 

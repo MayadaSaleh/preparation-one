@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public interface Contract {
 
     interface MyView {
-
+        void fungdedatany(String name);
         String getMail();
         String getPassword();
         void initView();
@@ -23,12 +23,14 @@ public interface Contract {
     }
 
     interface MyModel {
-        String getloginDatafromJson(String mail, String password);
+        void getloginDatafromJson(String mail, String password);
     }
 
     interface MyPresenter {
         void getUserDetailsusingFBPresenter(LoginResult loginResult);
-        String checkjson(String mail, String password);
+        void checkjson(String mail, String password);
+
+        void funcgdeda(String name);
     }
 
 

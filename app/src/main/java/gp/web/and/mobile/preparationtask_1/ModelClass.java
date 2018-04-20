@@ -24,10 +24,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ModelClass implements Contract.MyModel {
     String users = "loading";
+    Contract.MyPresenter pres;
 
+    public ModelClass(Contract.MyPresenter presenter) {
+        this.pres = presenter;
+    }
     //Using API by Retrofit
     @Override
-    public String getloginDatafromJson(final String mail, final String password) {
+    public void getloginDatafromJson(final String mail, final String password) {
         if (users == "loading") {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Api.BASE_URL)
@@ -40,15 +44,19 @@ public class ModelClass implements Contract.MyModel {
             call.enqueue(new Callback<UserResponse>() {
                 @Override
                 public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                    users = "true";
+                   // users = "true";
+                    pres.funcgdeda("true");
                 }
 
                 @Override
                 public void onFailure(Call<UserResponse> call, Throwable t) {
-                    users = "false";
+
+                   // users = "false";
+                    pres.funcgdeda("false");
+
                 }
             });
         }
-        return users;
+       // return users;
     }
 }

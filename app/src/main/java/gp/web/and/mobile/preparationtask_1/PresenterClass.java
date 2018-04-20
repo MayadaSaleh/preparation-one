@@ -25,15 +25,19 @@ public class PresenterClass implements Contract.MyPresenter {
 
     public PresenterClass(Contract.MyView v) {
         myView = v;
-        model = new ModelClass();
+        model = new ModelClass(this);
         myView.initView();
     }
 
     //
     @Override
-    public String checkjson(String mail, String password) {
-        String jsondataStatus = model.getloginDatafromJson(mail, password);
-        return jsondataStatus;
+    public void checkjson(String mail, String password) {
+         model.getloginDatafromJson(mail, password);
+    }
+
+    @Override
+    public void funcgdeda(String name) {
+        myView.fungdedatany(name);
     }
 
     @Override
