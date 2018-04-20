@@ -45,14 +45,14 @@ public class ModelClass implements Contract.MyModel {
                 @Override
                 public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                    // users = "true";
-                    pres.funcgdeda("true");
+                    pres.getRetrofitResult("true");
                 }
 
                 @Override
                 public void onFailure(Call<UserResponse> call, Throwable t) {
 
                    // users = "false";
-                    pres.funcgdeda("false");
+                    pres.getRetrofitResult("false");
 
                 }
             });

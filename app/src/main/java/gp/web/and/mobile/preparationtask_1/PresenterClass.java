@@ -36,8 +36,8 @@ public class PresenterClass implements Contract.MyPresenter {
     }
 
     @Override
-    public void funcgdeda(String name) {
-        myView.fungdedatany(name);
+    public void getRetrofitResult(String name) {
+        myView.checkRetrofitResult(name);
     }
 
     @Override

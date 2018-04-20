@@ -185,7 +185,7 @@ public class MainActivity extends Activity implements Contract.MyView {
     }
 
 @Override
-    public  void fungdedatany(String check) {
+    public  void checkRetrofitResult(String check) {
         if (check == "true") {
             Toast.makeText(getApplicationContext(), R.string.mymail + userName.getText().toString().trim() + R.string.mypassword + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
 

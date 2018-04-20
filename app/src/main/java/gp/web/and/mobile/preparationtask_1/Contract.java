@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public interface Contract {
 
     interface MyView {
-        void fungdedatany(String name);
+        void checkRetrofitResult(String name);
         String getMail();
         String getPassword();
         void initView();
@@ -30,7 +30,7 @@ public interface Contract {
         void getUserDetailsusingFBPresenter(LoginResult loginResult);
         void checkjson(String mail, String password);
 
-        void funcgdeda(String name);
+        void getRetrofitResult(String name);
     }
 
 
