@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements Contract.MyView {
                 getValidationResult("2");
             }
         } else {
-            Toast.makeText(getApplicationContext(), R.string.Internt_access, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.Internt_access), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -161,43 +161,40 @@ public class MainActivity extends Activity implements Contract.MyView {
 
         switch (s) {
             case "1":
-                Toast.makeText(getApplicationContext(), R.string.valid_data, Toast.LENGTH_LONG).show();
-                 myPresenter.checkjson(userName.getText().toString().trim(), password.getText().toString().trim());
+                Toast.makeText(getApplicationContext(),R.string.valid_data, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),getApplicationContext().getResources().getString(R.string.mymail)+ userName.getText().toString().trim() + getApplicationContext().getResources().getString(R.string.mypassword) + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
+                myPresenter.checkjson(userName.getText().toString().trim(), password.getText().toString().trim());
                 break;
 
             case "2":
-                Toast.makeText(getApplicationContext(), R.string.notvaliddata, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),getApplicationContext().getResources().getString(R.string.notvaliddata), Toast.LENGTH_LONG).show();
                 break;
 
             case "3":
-                Toast.makeText(getApplicationContext(), R.string.not_valid_password, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.not_valid_password), Toast.LENGTH_LONG).show();
                 break;
 
             case "4":
-                Toast.makeText(getApplicationContext(), R.string.not_valid_mail, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.not_valid_mail), Toast.LENGTH_LONG).show();
                 break;
 
             case "5":
-                Toast.makeText(getApplicationContext(), R.string.notValid, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.notValid), Toast.LENGTH_LONG).show();
                 break;
         }
 
     }
 
 @Override
-    public  void checkRetrofitResult(String check) {
-        if (check == "true") {
-            Toast.makeText(getApplicationContext(), R.string.mymail + userName.getText().toString().trim() + R.string.mypassword + password.getText().toString().trim(), Toast.LENGTH_LONG).show();
-
+    public  void checkRetrofitResult(Boolean check) {
+        if (check == true) {
             Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
             myIntent.putExtra("mail", userName.getText().toString().trim());
             myIntent.putExtra("password", password.getText().toString().trim());
             MainActivity.this.startActivity(myIntent);
-        } else if (check == "loading") {
-            Toast.makeText(getApplicationContext(), R.string.loading_data, Toast.LENGTH_LONG).show();
-
-        } else {
-            Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
+        }
+        else if(check==false){
+            Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.error), Toast.LENGTH_LONG).show();
         }
     }
 }

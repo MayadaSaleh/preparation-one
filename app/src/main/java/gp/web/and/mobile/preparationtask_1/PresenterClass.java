@@ -36,8 +36,8 @@ public class PresenterClass implements Contract.MyPresenter {
     }
 
     @Override
-    public void getRetrofitResult(String name) {
-        myView.checkRetrofitResult(name);
+    public void getRetrofitResult(Boolean check) {
+        myView.checkRetrofitResult(check);
     }
 
     @Override
